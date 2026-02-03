@@ -1,0 +1,18 @@
+{
+  "index": 1,
+  "source_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/source/0000/00a19ab0e5d0ae70e84416c1396be01b.mp4",
+  "edited_video": null,
+  "character_key": null,
+  "prompt": "<extra_id_0>, wearing a red polka-dot dress, lies on a white cloth in a field of tall grass and red poppies, posing softly in the sunlight. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> is walking through a snowy city street at night, wrapped in a warm coat and scarf, looking at holiday lights.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 44,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_5b_filtered_pair/checkpoint-2400.safetensors",
+  "lora_weight": 1.0,
+  "rank": 0,
+  "world_size": 1,
+  "data_parallel": false,
+  "fps": 24,
+  "src_frame_sampling": "contiguous"
+}

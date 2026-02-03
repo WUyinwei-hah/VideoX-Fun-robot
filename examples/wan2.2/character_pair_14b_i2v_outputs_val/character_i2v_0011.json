@@ -1,0 +1,21 @@
+{
+  "index": 11,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0001_American_Beauty/Lester_Burnham/0001_American_Beauty_00.08.17.773-00.08.18.969.avi",
+  "character_key": "0001_American_Beauty/Lester_Burnham",
+  "prompt": "<extra_id_0> sits contemplatively at a dimly lit dining table as <extra_id_1> holds a wine glass, observing him critically, amid candles and a floral centerpiece. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_2>, in a striped sweater, rinses a plate at the sink as <extra_id_0> approaches her in the clean, window-lit kitchen with countertops and kitchen items.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 53,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

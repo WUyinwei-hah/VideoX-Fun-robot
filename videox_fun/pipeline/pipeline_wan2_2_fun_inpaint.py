@@ -553,6 +553,8 @@ class Wan2_2FunInpaintPipeline(DiffusionPipeline):
             max_sequence_length=max_sequence_length,
             device=device,
         )
+        print("prompt_embeds[0].shape")
+        print(prompt_embeds[0].shape)
         if do_classifier_free_guidance:
             in_prompt_embeds = negative_prompt_embeds + prompt_embeds
         else:
@@ -638,7 +640,7 @@ class Wan2_2FunInpaintPipeline(DiffusionPipeline):
                 )
                 mask_condition = mask_condition.view(bs, mask_condition.shape[2] // 4, 4, height, width)
                 mask_condition = mask_condition.transpose(1, 2)
-                mask_latents = resize_mask(1 - mask_condition, masked_video_latents, True).to(device, weight_dtype) 
+                mask_latents = resize_mask(1 - mask_condition, masked_video_latents, True).to(device, weight_dtype)  # mask为0的是要生成的
 
                 if self.vae.spatial_compression_ratio >= 16:
                     mask = F.interpolate(mask_condition[:, :1], size=latents.size()[-3:], mode='trilinear', align_corners=True).to(device, weight_dtype)

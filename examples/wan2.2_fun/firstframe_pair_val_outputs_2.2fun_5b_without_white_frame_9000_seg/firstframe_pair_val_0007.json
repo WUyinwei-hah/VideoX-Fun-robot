@@ -1,0 +1,18 @@
+{
+  "index": 7,
+  "source_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/source/0000/00a19ab0e5d0ae70e84416c1396be01b.mp4",
+  "condition_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/foreground_segmented/0000/00a19ab0e5d0ae70e84416c1396be01b.mp4",
+  "edited_video": null,
+  "character_key": null,
+  "prompt": "ad23r2 A full-frame white flash for an instant, then a hard cut to the next shot. A person wearing a red polka-dot dress is now in a different setting—an airy indoor photo studio with a plain backdrop—while keeping the red polka-dot dress to preserve identity. The same person as the previous shot poses under soft studio lights, doing a slow turn and a gentle smile.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 50,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_moviebench_firstframe_pair_5b_whithout_white_frame_seg/checkpoint-9000.safetensors",
+  "lora_weight": 1.0,
+  "lora_high_path": null,
+  "lora_high_weight": 0.55,
+  "fps": 24,
+  "src_frame_sampling": "contiguous"
+}

@@ -1,0 +1,21 @@
+{
+  "index": 12,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0003_CASABLANCA/Rick_Blaine/0003_CASABLANCA_00.43.26.602-00.43.36.063.avi",
+  "character_key": "0003_CASABLANCA/Rick_Blaine",
+  "prompt": "<extra_id_0> moves quickly with a bottle, <extra_id_1> follows holding a glass, both tense, rushing toward a window in a room with checkered tablecloths as German troops approach Paris. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> holds <extra_id_1> closely in an intimate embrace against softly lit patterned window panels, conveying deep emotional connection.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 54,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

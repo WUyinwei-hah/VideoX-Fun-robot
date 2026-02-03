@@ -1,0 +1,21 @@
+{
+  "index": 13,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0005_Chinatown/Walsh/0005_Chinatown_00.44.08.849-00.44.09.843__2.avi",
+  "character_key": "0005_Chinatown/Walsh",
+  "prompt": "<extra_id_0> and <extra_id_2>, both in suits, sit on a couch in a mid-20th-century office with closed blinds and framed pictures, laughing raucously during a shared joke. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_1>, seated and smiling, gestures animatedly as <extra_id_0> leans forward, engaged in conversation, against a mid-20th century office backdrop with blinds, photos, a fan, and radio.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 55,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

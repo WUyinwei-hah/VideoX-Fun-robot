@@ -165,10 +165,18 @@ class AspectRatioBatchImageSampler(BatchSampler):
 
                     width, height = get_image_size_without_loading(image_dir)
 
+                    # Skip corrupted images with invalid dimensions
+                    if width is None or height is None or width <= 0 or height <= 0:
+                        print(f"Skipping corrupted image (invalid dimensions): {image_dir}")
+                        continue
+
                     ratio = height / width # self.dataset[idx]
                 else:
                     height = int(height)
                     width = int(width)
+                    if width <= 0 or height <= 0:
+                        print(f"Skipping image with invalid dimensions: {image_dict}")
+                        continue
                     ratio = height / width # self.dataset[idx]
             except Exception as e:
                 print(e)
@@ -247,11 +255,20 @@ class AspectRatioBatchSampler(BatchSampler):
                     # 获取视频尺寸
                     width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))   # 浮点数转换为整数
                     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 浮点数转换为整数
+                    cap.release()
+                    
+                    # Skip corrupted videos with invalid dimensions
+                    if width <= 0 or height <= 0:
+                        print(f"Skipping corrupted video (invalid dimensions {width}x{height}): {video_dir}")
+                        continue
                     
                     ratio = height / width # self.dataset[idx]
                 else:
                     height = int(height)
                     width = int(width)
+                    if width <= 0 or height <= 0:
+                        print(f"Skipping video with invalid dimensions: {video_dict}")
+                        continue
                     ratio = height / width # self.dataset[idx]
             except Exception as e:
                 print(e, self.dataset[idx], "This item is error, please check it.")
@@ -324,10 +341,18 @@ class AspectRatioBatchImageVideoSampler(BatchSampler):
 
                         width, height = get_image_size_without_loading(image_dir)
 
+                        # Skip corrupted images with invalid dimensions
+                        if width is None or height is None or width <= 0 or height <= 0:
+                            print(f"Skipping corrupted image (invalid dimensions): {image_dir}")
+                            continue
+
                         ratio = height / width # self.dataset[idx]
                     else:
                         height = int(height)
                         width = int(width)
+                        if width <= 0 or height <= 0:
+                            print(f"Skipping image with invalid dimensions: {image_dict}")
+                            continue
                         ratio = height / width # self.dataset[idx]
                 except Exception as e:
                     print(e, self.dataset[idx], "This item is error, please check it.")
@@ -358,11 +383,20 @@ class AspectRatioBatchImageVideoSampler(BatchSampler):
                         # 获取视频尺寸
                         width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))   # 浮点数转换为整数
                         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))  # 浮点数转换为整数
+                        cap.release()
+                        
+                        # Skip corrupted videos with invalid dimensions
+                        if width <= 0 or height <= 0:
+                            print(f"Skipping corrupted video (invalid dimensions {width}x{height}): {video_dir}")
+                            continue
                         
                         ratio = height / width # self.dataset[idx]
                     else:
                         height = int(height)
                         width = int(width)
+                        if width <= 0 or height <= 0:
+                            print(f"Skipping video with invalid dimensions: {video_dict}")
+                            continue
                         ratio = height / width # self.dataset[idx]
                 except Exception as e:
                     print(e, self.dataset[idx], "This item is error, please check it.")

@@ -1,0 +1,18 @@
+{
+  "index": 2,
+  "source_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/source/0000/00a17e95c25072cb1459b761d777b85d.mp4",
+  "condition_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/foreground_segmented/0000/00a17e95c25072cb1459b761d777b85d.mp4",
+  "edited_video": null,
+  "character_key": null,
+  "prompt": "ad23r2 A full-frame white flash for an instant, then a hard cut to the next shot. A person wearing a grey sweatshirt and light pants is still in the same workspace, but filmed from a side angle with warmer, evening light. The same person as the previous shot takes a phone call, then returns to the desk and types on the laptop.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 45,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_moviebench_firstframe_pair_5b_whithout_white_frame_seg/checkpoint-9000.safetensors",
+  "lora_weight": 1.0,
+  "lora_high_path": null,
+  "lora_high_weight": 0.55,
+  "fps": 24,
+  "src_frame_sampling": "contiguous"
+}

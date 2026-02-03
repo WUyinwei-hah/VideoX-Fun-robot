@@ -1,0 +1,21 @@
+{
+  "index": 9,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0011_Gandhi/Nehru/0011_Gandhi_02.36.18.771-02.36.23.594.avi",
+  "character_key": "0011_Gandhi/Nehru",
+  "prompt": "<extra_id_1> speaks assertively about Pakistan’s Muslim majority, raising his voice as <extra_id_0> overhears nearby, against a backdrop of columns and greenery. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> lies distressed on the ground urging non-violence as <extra_id_2> struggles fiercely with a soldier, amid a chaotic protest scene with traditional-clad people and scattered objects.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 51,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

@@ -38,15 +38,15 @@ from videox_fun.utils.fm_solvers_unipc import FlowUniPCMultistepScheduler
 # 
 # sequential_cpu_offload means that each layer of the model will be moved to the CPU after use, 
 # resulting in slower speeds but saving a large amount of GPU memory.
-GPU_memory_mode     = "sequential_cpu_offload"
+GPU_memory_mode     = "model_full_load"
 # Multi GPUs config
 # Please ensure that the product of ulysses_degree and ring_degree equals the number of GPUs used. 
 # For example, if you are using 8 GPUs, you can set ulysses_degree = 2 and ring_degree = 4.
 # If you are using 1 GPU, you can set ulysses_degree = 1 and ring_degree = 1.
-ulysses_degree      = 1
+ulysses_degree      = 8
 ring_degree         = 1
 # Use FSDP to save more GPU memory in multi gpus.
-fsdp_dit            = False
+fsdp_dit            = True
 fsdp_text_encoder   = True
 # Compile will give a speedup in fixed resolution and need a little GPU memory. 
 # The compile_dit is not compatible with the fsdp_dit and sequential_cpu_offload.
@@ -61,7 +61,7 @@ enable_teacache     = True
 # | Wan2.2-T2V-A14B     | 0.10~0.15 | Wan2.2-I2V-A14B     | 0.15~0.20 |
 # | Wan2.2-Fun-A14B-*   | 0.15~0.20 |
 # # --------------------------------------------------------------------------------------------------- #
-teacache_threshold  = 0.10
+teacache_threshold  = 0.15
 # The number of steps to skip TeaCache at the beginning of the inference process, which can
 # reduce the impact of TeaCache on generated video quality.
 num_skip_start_steps = 5
@@ -78,9 +78,9 @@ enable_riflex       = False
 riflex_k            = 6
 
 # Config and model path
-config_path         = "config/wan2.2/wan_civitai_i2v.yaml"
+config_path         = "/gemini/code/VideoX-Fun/config/wan2.2/wan_civitai_i2v.yaml"
 # model path
-model_name          = "models/Diffusion_Transformer/Wan2.2-Fun-A14B-InP"
+model_name          = "/gemini/code/models/Wan2.2-Fun-A14B-InP"
 
 # Choose the sampler in "Flow", "Flow_Unipc", "Flow_DPM++"
 sampler_name        = "Flow"
@@ -98,29 +98,57 @@ vae_path                = None
 lora_path               = None
 lora_high_path          = None 
 
-# Other params
-sample_size         = [480, 832]
-video_length        = 81
-fps                 = 16
-
 # Use torch.float16 if GPU does not support torch.bfloat16
 # ome graphics cards, such as v100, 2080ti, do not support torch.bfloat16
 weight_dtype            = torch.bfloat16
 # If you want to generate from text, please set the validation_image_start = None and validation_image_end = None
-validation_image_start  = "asset/1.png"
+validation_image_start  = "/gemini/code/UNIFY_REFER_GEN/selected_noface_videos/no_face_start.png"
+# validation_image_start  = "/gemini/code/VideoX-Fun/test_data/sipderman.png"
 validation_image_end    = None
+# validation_image_end    = "/gemini/code/VideoX-Fun/IP_benchmark/walle1.jpg"
+# validation_image_end    = "/gemini/code/VideoX-Fun/IP_benchmark/popeye1.jpg"
+# validation_image_end    = "/gemini/code/VideoX-Fun/test_data/laughing_kitty.png"
+prompt              = "No-Face sets down the basin of meat, turns his body to face the camera. 他用他黑色身体上的留着口水的嘴在说着什么."
+negative_prompt     = "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
+save_path           = "samples/wan2.2fun-noface"
+# Other params
+# 自动读取图片并根据其宽高比设置 480p 分辨率
+if validation_image_start is not None and os.path.exists(validation_image_start):
+    image = Image.open(validation_image_start)
+    width, height = image.size
+    aspect_ratio = width / height
+
+    # 设置 480p 分辨率（高度为480），并保持原始宽高比
+    target_height = 640
+    target_width = int(target_height * aspect_ratio)
+
+    # 确保宽度是16的倍数（模型通常需要这个）
+    target_width = (target_width // 16) * 16
+
+    sample_size = [target_height, target_width]
+    print(f"Detected image size: {width}x{height}, aspect ratio: {aspect_ratio:.2f}")
+    print(f"Set sample_size to: {sample_size}")
+else:
+    # 默认 480p 分辨率 (854x480, 16:9)
+    sample_size = [480, 864]
+    print(f"Warning: validation_image_start not found or not set, using default sample_size: {sample_size}")
+
+video_length        = 81
+fps                 = 16
+
+
 
 # 使用更长的neg prompt如"模糊，突变，变形，失真，画面暗，文本字幕，画面固定，连环画，漫画，线稿，没有主体。"，可以增加稳定性
 # 在neg prompt中添加"安静，固定"等词语可以增加动态性。
-prompt              = "一只棕色的狗摇着头，坐在舒适房间里的浅色沙发上。在狗的后面，架子上有一幅镶框的画，周围是粉红色的花朵。房间里柔和温暖的灯光营造出舒适的氛围。"
-negative_prompt     = "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
+# prompt              = "蜘蛛侠在城市高楼间穿梭"
+
+# negative_prompt     = "有嘴巴的"
 guidance_scale      = 6.0
 seed                = 43
 num_inference_steps = 50
 # The lora_weight is used for low noise model, the lora_high_weight is used for high noise model.
 lora_weight         = 0.55
 lora_high_weight    = 0.55
-save_path           = "samples/wan-videos-fun-i2v"
 
 device = set_multi_gpus_devices(ulysses_degree, ring_degree)
 config = OmegaConf.load(config_path)

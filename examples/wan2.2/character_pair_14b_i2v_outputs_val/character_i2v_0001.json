@@ -1,0 +1,21 @@
+{
+  "index": 1,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0001_American_Beauty/Jim_Olmeyer/0001_American_Beauty_00.02.37.487-00.02.38.724__2.avi",
+  "character_key": "0001_American_Beauty/Jim_Olmeyer",
+  "prompt": "<extra_id_0>, in a conservative suit holding a cup, walks from a brick house with green shutters along a sidewalk in a tidy suburban neighborhood. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> in a suit and purple tie walks toward <extra_id_1>, who wears an apron holding gardening tools, as they smile and exchange compliments in a suburban yard with a white picket fence and silver SUV.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 43,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

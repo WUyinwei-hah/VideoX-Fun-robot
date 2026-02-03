@@ -1,0 +1,21 @@
+{
+  "index": 14,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0007_DIE_NACHT_DES_JAEGERS/Harry_Powell/0007_DIE_NACHT_DES_JAEGERS_00.39.56.920-00.39.57.287__2.avi",
+  "character_key": "0007_DIE_NACHT_DES_JAEGERS/Harry_Powell",
+  "prompt": "<extra_id_0> examines a knife from his coat pocket with tense, ominous demeanor in a dimly lit room featuring a staircase and wooden chair. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0>, silhouetted on horseback, rides singing across a stark horizon as <extra_id_1> watches from a barn, tension mounting under sparse trees and foreboding light.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 56,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

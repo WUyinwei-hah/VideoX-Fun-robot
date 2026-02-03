@@ -111,6 +111,36 @@ def get_random_mask(shape, image_start_only=False):
             mask[:, :, :, :] = 1
     return mask
 
+def get_random_mask_for_edit(shape):
+    f, c, h, w = shape
+    if f < 3:
+        raise ValueError("video length must be >= 3 for source + white + edited masking")
+
+    remaining = int(f - 1)
+    n_src = int(remaining // 2)
+    n_edt = int(remaining - n_src)
+    if n_src == 0 or n_edt == 0:
+        raise ValueError("video length too small to split into two halves with a middle white frame")
+
+    mask = torch.zeros((f, 1, h, w), dtype=torch.uint8)
+    mask[n_src + 1 :, :, :, :] = 1
+    return mask
+
+def get_random_mask_for_robot(shape):
+    f, c, h, w = shape
+    if f <= 0:
+        raise ValueError("video length must be a positive integer")
+    if f % 3 != 0:
+        raise ValueError(f"video length must be divisible by 3 for 3-chunk masking, got f={f}")
+
+    chunk_len = int((f-1)//4)//3*4+1
+    if chunk_len <= 0:
+        raise ValueError("video length too small for 3-chunk masking")
+
+    mask = torch.zeros((f, 1, h, w), dtype=torch.uint8)
+    mask[chunk_len:, :, :, :] = 1
+    return mask
+
 @contextmanager
 def VideoReader_contextmanager(*args, **kwargs):
     vr = VideoReader(*args, **kwargs)

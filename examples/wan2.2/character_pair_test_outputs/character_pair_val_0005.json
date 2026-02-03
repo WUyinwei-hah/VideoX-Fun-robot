@@ -1,0 +1,13 @@
+{
+  "index": 5,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0004_Charade/Leopold_W._Gideon/0004_Charade_01.08.31.730-01.08.33.186__2.avi",
+  "edited_video": "/gemini/code/datasets/MovieBench_ByCharacter/0004_Charade/Leopold_W._Gideon/0004_Charade_00.16.56.040-00.16.56.648__2.avi",
+  "character_key": "0004_Charade/Leopold_W._Gideon",
+  "prompt": "<extra_id_3>, <extra_id_0>, and <extra_id_2> stand solemnly around a bathtub in a tiled bathroom, observing an unconscious man, their expressions grave. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> walks slowly through a museum of war, pausing at a cracked photograph of a city in ruins, his reflection faint in the glass.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 47,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_5b_filtered_pair/checkpoint-2400.safetensors",
+  "lora_weight": 1.0
+}

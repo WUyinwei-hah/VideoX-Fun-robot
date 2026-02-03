@@ -899,7 +899,7 @@ class WanTransformer3DModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
 
         if clip_fea is not None:
             context_clip = self.img_emb(clip_fea)  # bs x 257 x dim
-            context = torch.concat([context_clip, context], dim=1)
+            context = torch.concat([context_clip, context], dim=1) # 直接拼在后面了
 
         # Context Parallel
         if self.sp_world_size > 1:

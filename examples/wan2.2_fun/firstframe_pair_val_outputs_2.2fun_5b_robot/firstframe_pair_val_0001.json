@@ -1,0 +1,17 @@
+{
+  "index": 1,
+  "negative_video": "/gemini/code/datasets/libero/perturbed/libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo/negative_videos/demo_7.mp4",
+  "original_video": "/gemini/code/datasets/libero/perturbed/libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo/original_videos/demo_7.mp4",
+  "condition_video": "/gemini/code/datasets/libero/perturbed/libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_demo/negative_videos/demo_7.mp4",
+  "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+  "height": 640,
+  "width": 640,
+  "video_length": 129,
+  "seed": 44,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_robot_libero/checkpoint-16500.safetensors",
+  "lora_weight": 1.0,
+  "lora_high_path": null,
+  "lora_high_weight": 0.55,
+  "fps": 16,
+  "src_frame_sampling": "stride2_then_tail"
+}

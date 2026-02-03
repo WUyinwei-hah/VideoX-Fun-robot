@@ -79,9 +79,9 @@ enable_riflex       = False
 riflex_k            = 6
 
 # Config and model path
-config_path         = "config/wan2.1/wan_civitai.yaml"
+config_path         = "/gemini/code/VideoX-Fun/config/wan2.1/wan_civitai.yaml"
 # model path
-model_name          = "models/Diffusion_Transformer/Wan2.1-Fun-V1.1-1.3B-InP"
+model_name          = "/gemini/code/models/Wan2.1-Fun-14B-InP"
 
 # Choose the sampler in "Flow", "Flow_Unipc", "Flow_DPM++"
 sampler_name        = "Flow"
@@ -97,7 +97,7 @@ vae_path            = None
 lora_path           = None
 
 # Other params
-sample_size         = [480, 832]
+sample_size         = [512, 512]
 video_length        = 81
 fps                 = 16
 
@@ -105,17 +105,27 @@ fps                 = 16
 # ome graphics cards, such as v100, 2080ti, do not support torch.bfloat16
 weight_dtype            = torch.bfloat16
 # If you want to generate from text, please set the validation_image_start = None and validation_image_end = None
-validation_image_start  = "asset/1.png"
-validation_image_end    = None
+# Use torch.float16 if GPU does not support torch.bfloat16
+# ome graphics cards, such as v100, 2080ti, do not support torch.bfloat16
+weight_dtype            = torch.bfloat16
+# If you want to generate from text, please set the validation_image_start = None and validation_image_end = None
+validation_image_start  = "/gemini/code/VideoX-Fun/IP_benchmark/walle.jpeg"
+# validation_image_start  = "/gemini/code/VideoX-Fun/test_data/sipderman.png"
+validation_image_end    = "/gemini/code/VideoX-Fun/IP_benchmark/walle1.jpg"
+# validation_image_end    = "/gemini/code/VideoX-Fun/IP_benchmark/popeye1.jpg"
+# validation_image_end    = "/gemini/code/VideoX-Fun/test_data/laughing_kitty.png"
+prompt              = "卡通角色把肚子打开，将手中的魔方放入肚子中。"
+negative_prompt     = ""
+save_path           = "/gemini/code/VideoX-Fun/samples/wan2.1fun-walle"
 
 # prompts
-prompt              = "一只棕色的狗摇着头，坐在舒适房间里的浅色沙发上。在狗的后面，架子上有一幅镶框的画，周围是粉红色的花朵。房间里柔和温暖的灯光营造出舒适的氛围。"
-negative_prompt     = "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
+# prompt              = "a cute cartoon lamb on a sunny tropical island field by the sea runs up and kicks the black-and-white soccer ball. After the kick, the ball moves forward with a smooth, realistic arc, then rolls along the grass and gradually slows down under gravity and friction, with no sudden direction changes or teleporting."
+# negative_prompt     = "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
 guidance_scale      = 6.0
 seed                = 43
 num_inference_steps = 50
 lora_weight         = 0.55
-save_path           = "samples/wan-videos-fun-i2v"
+# save_path           = "samples/wan-videos-fun-i2v"
 
 device = set_multi_gpus_devices(ulysses_degree, ring_degree)
 config = OmegaConf.load(config_path)

@@ -1,0 +1,17 @@
+{
+  "index": 15,
+  "negative_video": "/gemini/code/datasets/libero/perturbed/libero_90/LIVING_ROOM_SCENE2_pick_up_the_milk_and_put_it_in_the_basket_demo/negative_videos/demo_1.mp4",
+  "original_video": "/gemini/code/datasets/libero/perturbed/libero_90/LIVING_ROOM_SCENE2_pick_up_the_milk_and_put_it_in_the_basket_demo/original_videos/demo_1.mp4",
+  "condition_video": "/gemini/code/datasets/libero/perturbed/libero_90/LIVING_ROOM_SCENE2_pick_up_the_milk_and_put_it_in_the_basket_demo/negative_videos/demo_1.mp4",
+  "prompt": "pick up the milk and put it in the basket",
+  "height": 640,
+  "width": 640,
+  "video_length": 129,
+  "seed": 58,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_robot_libero/checkpoint-16500.safetensors",
+  "lora_weight": 1.0,
+  "lora_high_path": null,
+  "lora_high_weight": 0.55,
+  "fps": 16,
+  "src_frame_sampling": "stride2_then_tail"
+}

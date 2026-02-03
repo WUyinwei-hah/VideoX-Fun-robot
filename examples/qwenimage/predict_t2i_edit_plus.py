@@ -37,13 +37,13 @@ from videox_fun.utils.utils import get_image
 # 
 # sequential_cpu_offload means that each layer of the model will be moved to the CPU after use, 
 # resulting in slower speeds but saving a large amount of GPU memory.
-GPU_memory_mode     = "model_cpu_offload_and_qfloat8"
+GPU_memory_mode     = "model_full_load"
 # Multi GPUs config
 # Please ensure that the product of ulysses_degree and ring_degree equals the number of GPUs used. 
 # For example, if you are using 8 GPUs, you can set ulysses_degree = 2 and ring_degree = 4.
 # If you are using 1 GPU, you can set ulysses_degree = 1 and ring_degree = 1.
-ulysses_degree      = 1
-ring_degree         = 1
+ulysses_degree      = 2
+ring_degree         = 4
 # Use FSDP to save more GPU memory in multi gpus.
 fsdp_dit            = False
 fsdp_text_encoder   = False
@@ -67,7 +67,7 @@ teacache_offload    = False
 cfg_skip_ratio      = 0
 
 # model path
-model_name          = "models/Diffusion_Transformer/Qwen-Image-Edit-2509"
+model_name          = "/gemini/code/models/Qwen-Image-Edit-2509"
 
 # Choose the sampler in "Flow", "Flow_Unipc", "Flow_DPM++"
 sampler_name        = "Flow"
@@ -171,7 +171,7 @@ if ulysses_degree > 1 or ring_degree > 1:
     from functools import partial
     transformer.enable_multi_gpus_inference()
     if fsdp_dit:
-        shard_fn = partial(shard_model, device_id=device, param_dtype=weight_dtype)
+        shard_fn = partial(shard_model, device_id=device, param_dtype=weight_dtype, module_to_wrapper=transformer.transformer_blocks)
         pipeline.transformer = shard_fn(pipeline.transformer)
         print("Add FSDP DIT")
     if fsdp_text_encoder:

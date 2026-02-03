@@ -553,6 +553,7 @@ class WanFunInpaintPipeline(DiffusionPipeline):
             max_sequence_length=max_sequence_length,
             device=device,
         )
+
         if do_classifier_free_guidance:
             in_prompt_embeds = negative_prompt_embeds + prompt_embeds
         else:
@@ -614,8 +615,8 @@ class WanFunInpaintPipeline(DiffusionPipeline):
                 mask_condition = mask_condition.to(dtype=torch.float32)
                 mask_condition = rearrange(mask_condition, "(b f) c h w -> b c f h w", f=video_length)
 
-                masked_video = init_video * (torch.tile(mask_condition, [1, 3, 1, 1, 1]) < 0.5)
-                _, masked_video_latents = self.prepare_mask_latents(
+                masked_video = init_video * (torch.tile(mask_condition, [1, 3, 1, 1, 1]) < 0.5) # 就是把有内容的帧提取出来
+                _, masked_video_latents = self.prepare_mask_latents( # encode masked_video，包含输入的图像的信息
                     None,
                     masked_video,
                     batch_size,
@@ -633,10 +634,10 @@ class WanFunInpaintPipeline(DiffusionPipeline):
                         torch.repeat_interleave(mask_condition[:, :, 0:1], repeats=4, dim=2), 
                         mask_condition[:, :, 1:]
                     ], dim=2
-                )
+                ) # 84帧，让其能够//4
                 mask_condition = mask_condition.view(bs, mask_condition.shape[2] // 4, 4, height, width)
                 mask_condition = mask_condition.transpose(1, 2)
-                mask_latents = resize_mask(1 - mask_condition, masked_video_latents, True).to(device, weight_dtype) 
+                mask_latents = resize_mask(1 - mask_condition, masked_video_latents, True).to(device, weight_dtype) # 生成的是1，反之则是0
 
         # Prepare clip latent variables
         if clip_image is not None:

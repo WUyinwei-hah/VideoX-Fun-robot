@@ -1,0 +1,13 @@
+{
+  "index": 6,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0003_CASABLANCA/Signor_Ferrari/0003_CASABLANCA_01.10.17.044-01.10.18.426.avi",
+  "edited_video": "/gemini/code/datasets/MovieBench_ByCharacter/0003_CASABLANCA/Signor_Ferrari/0003_CASABLANCA_01.00.43.151-01.00.43.725.avi",
+  "character_key": "0003_CASABLANCA/Signor_Ferrari",
+  "prompt": "<extra_id_2>, in a white tuxedo, is kissed on both cheeks while <extra_id_0> smiles from the bar, as patrons chat amid bottles and glasses in the lively bar. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> leans against a graffiti-covered wall in a narrow alley, flipping a coin, while a stray cat watches from a dumpster.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 48,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_5b_filtered_pair/checkpoint-2400.safetensors",
+  "lora_weight": 1.0
+}

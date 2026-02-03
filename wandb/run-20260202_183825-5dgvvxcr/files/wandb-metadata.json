@@ -1,0 +1,134 @@
+{
+  "os":  "Linux-4.18.0-348.el8.x86_64-x86_64-with-glibc2.35",
+  "python":  "CPython 3.10.0",
+  "startedAt":  "2026-02-02T10:38:25.817361Z",
+  "args":  [
+    "--config_path=/gemini/code/VideoX-Fun/config/wan2.2/wan_civitai_5b.yaml",
+    "--pretrained_model_name_or_path=/gemini/code/models/Wan2.2-Fun-5B-InP",
+    "--dataset_type=robot",
+    "--robot_data_root=/gemini/code/datasets/libero/perturbed",
+    "--robot_suites",
+    "libero_90",
+    "libero_10",
+    "libero_goal",
+    "libero_object",
+    "libero_spatial",
+    "--libero_data_root=/gemini/code/datasets/LIBERO-Cosmos-Policy/success_only",
+    "--image_sample_size=256",
+    "--video_sample_size=256",
+    "--enable_bucket",
+    "--token_sample_size=256",
+    "--video_sample_stride=1",
+    "--video_sample_n_frames=45",
+    "--train_batch_size=32",
+    "--gradient_accumulation_steps=1",
+    "--dataloader_num_workers=0",
+    "--num_train_epochs=10000",
+    "--checkpointing_steps=500",
+    "--save_state",
+    "--resume_from_checkpoint=latest",
+    "--learning_rate=1e-04",
+    "--seed=42",
+    "--output_dir=/gemini/code/VideoX-Fun/scripts/closed_loop_wan2.2_fun/output_dir_robot_libero",
+    "--gradient_checkpointing",
+    "--mixed_precision=bf16",
+    "--adam_weight_decay=3e-2",
+    "--adam_epsilon=1e-10",
+    "--vae_mini_batch=1",
+    "--max_grad_norm=0.05",
+    "--random_hw_adapt",
+    "--training_with_video_token_length",
+    "--uniform_sampling",
+    "--boundary_type=full",
+    "--rank=128",
+    "--network_alpha=128",
+    "--target_name=q,k,v,ffn.0,ffn.2",
+    "--use_peft_lora",
+    "--train_mode=inpaint",
+    "--low_vram"
+  ],
+  "program":  "/gemini/code/VideoX-Fun/scripts/closed_loop_wan2.2_fun/train_lora_robot.py",
+  "codePath":  "scripts/closed_loop_wan2.2_fun/train_lora_robot.py",
+  "codePathLocal":  "scripts/closed_loop_wan2.2_fun/train_lora_robot.py",
+  "git":  {
+    "remote":  "https://github.com/aigc-apps/VideoX-Fun.git",
+    "commit":  "d0fcc4d459251be653c516490fa7493bee7bf496"
+  },
+  "email":  "WYW3276027@126.com",
+  "root":  "/gemini/code/VideoX-Fun",
+  "host":  "57379c90f99b68a651dff647fd9ff962-taskrole1-0",
+  "executable":  "/gemini/code/envs/videoxfun/bin/python3.10",
+  "cpu_count":  96,
+  "cpu_count_logical":  192,
+  "gpu":  "NVIDIA H100 80GB HBM3",
+  "gpu_count":  8,
+  "disk":  {
+    "/":  {
+      "total":  "7679364128768",
+      "used":  "845231345664"
+    }
+  },
+  "memory":  {
+    "total":  "2164298846208"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-c57b6cb4-f7f7-47d2-0bc7-6ff4a23a91ec"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-17d4d72d-4a05-9acf-824a-f43aca0f42c5"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-d99ae3b3-b33c-a413-29fb-2bab3162752c"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-75294cc1-5551-bfe8-8c90-013fc1a1e194"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-0683d04c-bb94-86ca-88de-e61c43070e90"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-13ef0c41-4f3b-c2f7-67fd-27116149ead7"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-b300c66d-f093-6c1b-da06-a93cf9820a17"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-c5c2e0fb-d841-1919-dcaf-30ed663f10d1"
+    }
+  ],
+  "cudaVersion":  "12.8",
+  "writerId":  "e3ajmbger8r4yt9dvrdhglidxwjvhwcc"
+}

@@ -1,0 +1,15 @@
+{
+  "index": 0,
+  "source_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/source/0000/00a17e95c25072cb1459b761d777b85d.mp4",
+  "edited_video": null,
+  "character_key": null,
+  "prompt": "A person wearing a grey sweatshirt and light pants, sits on a teal stool at a white kitchen island, working on a laptop and occasionally sipping from a blue mug. ad23r2 A full-frame white flash for an instant, then a hard cut to the next shot. A person is tending to plants in a lush green garden, wearing a sun hat and holding a watering can.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 43,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_moviebench_firstframe_pair_5b_2.2fun/checkpoint-1500.safetensors",
+  "lora_weight": 1.0,
+  "fps": 24,
+  "src_frame_sampling": "contiguous"
+}

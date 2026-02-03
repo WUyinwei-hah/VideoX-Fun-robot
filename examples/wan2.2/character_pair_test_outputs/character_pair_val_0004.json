@@ -1,0 +1,13 @@
+{
+  "index": 4,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0006_Clerks/Dante/0006_Clerks_00.02.26.330-00.02.26.713.avi",
+  "edited_video": "/gemini/code/datasets/MovieBench_ByCharacter/0006_Clerks/Dante/0006_Clerks_00.03.32.837-00.03.55.971__2.avi",
+  "character_key": "0006_Clerks/Dante",
+  "prompt": "<extra_id_0> drinks from a pig-shaped mug, relaxed and casual, in a kitchen with curtains and a pig-shaped container, evoking a homey atmosphere. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> stands in a laundromat at midnight, folding clothes under humming fluorescent lights, a single sock dangling from his hand.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 46,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_5b_filtered_pair/checkpoint-2400.safetensors",
+  "lora_weight": 1.0
+}

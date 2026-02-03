@@ -1,0 +1,17 @@
+{
+  "index": 2,
+  "source_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/source/0000/001fc10433827fe5c69cf60cd16dc0f0.mp4",
+  "edited_video": null,
+  "character_key": null,
+  "prompt": "A person dressed in a black blazer with sharp eyeliner and red lipstick, stands against a red background, making a finger-gun gesture followed by a shushing motion. ad23r2 A full-frame white flash for an instant, then a hard cut to the next shot. A person is playing the violin on a dimly lit stage, wearing an elegant evening gown, focused intensely on the music.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 45,
+  "lora_path": "/gemini/code/FFGO-Video-Customization-main/VideoX-Fun/output_dir_moviebench_firstframe_pair_14b_low/checkpoint-1600",
+  "lora_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_moviebench_firstframe_pair_14b_high/checkpoint-1600",
+  "lora_high_weight": 1.0,
+  "fps": 24,
+  "src_frame_sampling": "contiguous"
+}

@@ -1,0 +1,17 @@
+{
+  "index": 1,
+  "source_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/source/0000/00a19ab0e5d0ae70e84416c1396be01b.mp4",
+  "edited_video": null,
+  "character_key": null,
+  "prompt": "A person wearing a red polka-dot dress, lies on a white cloth in a field of tall grass and red poppies, posing softly in the sunlight. A hard cut to the next shot, featuring the same character, maintaining identity continuity across shots. A person is walking through a snowy city street at night, wrapped in a warm coat and scarf, looking at holiday lights.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 44,
+  "lora_path": null,
+  "lora_weight": 0.55,
+  "lora_high_path": null,
+  "lora_high_weight": 0.55,
+  "fps": 24,
+  "src_frame_sampling": "contiguous"
+}

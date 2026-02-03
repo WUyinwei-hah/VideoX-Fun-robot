@@ -160,13 +160,13 @@ def get_image_to_video_latent(validation_image_start, validation_image_end, vide
             image_end = validation_image_end
             image_end = [_image_end.resize([sample_size[1], sample_size[0]]) for _image_end in image_end]
 
-        if type(image_start) is list:
+        if type(image_start) is list: # TODO：直接传数组
             clip_image = clip_image[0]
             start_video = torch.cat(
                 [torch.from_numpy(np.array(_image_start)).permute(2, 0, 1).unsqueeze(1).unsqueeze(0) for _image_start in image_start], 
                 dim=2
             )
-            input_video = torch.tile(start_video[:, :, :1], [1, 1, video_length, 1, 1])
+            input_video = torch.tile(start_video[:, :, :1], [1, 1, video_length, 1, 1]) # 把后面的用第一帧填充
             input_video[:, :, :len(image_start)] = start_video
             
             input_video_mask = torch.zeros_like(input_video[:, :1])
@@ -235,7 +235,7 @@ def get_image_to_video_latent(validation_image_start, validation_image_end, vide
     del image_start
     del image_end
     gc.collect()
-
+    # input video 第0帧到倒数第二帧都是等于start，而最后一帧等于end。input_video_mask首尾都是0，中间255。
     return  input_video, input_video_mask, clip_image
 
 def get_video_to_video_latent(input_video_path, video_length, sample_size, fps=None, validation_video_mask=None, ref_image=None):

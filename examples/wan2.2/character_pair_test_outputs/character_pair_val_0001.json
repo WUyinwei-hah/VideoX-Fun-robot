@@ -1,0 +1,13 @@
+{
+  "index": 1,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0001_American_Beauty/Jim_Olmeyer/0001_American_Beauty_00.02.37.487-00.02.38.724__2.avi",
+  "edited_video": "/gemini/code/datasets/MovieBench_ByCharacter/0001_American_Beauty/Jim_Olmeyer/0001_American_Beauty_00.02.48.867-00.02.55.904__2.avi",
+  "character_key": "0001_American_Beauty/Jim_Olmeyer",
+  "prompt": "<extra_id_0>, in a conservative suit holding a cup, walks from a brick house with green shutters along a sidewalk in a tidy suburban neighborhood. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> jogs through a misty park at dawn, earbuds in, breath visible in the cold air, passing a statue of a forgotten general.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 43,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_5b_filtered_pair/checkpoint-2400.safetensors",
+  "lora_weight": 1.0
+}

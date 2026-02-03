@@ -1,0 +1,17 @@
+{
+  "index": 42,
+  "negative_video": "/gemini/code/datasets/libero/perturbed/libero_90/LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_right_of_the_plate_demo/negative_videos/demo_2.mp4",
+  "original_video": "/gemini/code/datasets/libero/perturbed/libero_90/LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_right_of_the_plate_demo/original_videos/demo_2.mp4",
+  "condition_video": "/gemini/code/datasets/libero/perturbed/libero_90/LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_right_of_the_plate_demo/negative_videos/demo_2.mp4",
+  "prompt": "put the chocolate pudding to the right of the plate",
+  "height": 640,
+  "width": 640,
+  "video_length": 129,
+  "seed": 85,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_robot_libero/checkpoint-16500.safetensors",
+  "lora_weight": 1.0,
+  "lora_high_path": null,
+  "lora_high_weight": 0.55,
+  "fps": 16,
+  "src_frame_sampling": "stride2_then_tail"
+}

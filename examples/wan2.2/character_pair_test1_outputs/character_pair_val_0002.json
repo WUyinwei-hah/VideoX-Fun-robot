@@ -1,0 +1,18 @@
+{
+  "index": 2,
+  "source_video": "/gemini/code/datasets/Ditto-1M/videos_extracted/source/0000/001d922f79de841af17ecb06d356d648.mp4",
+  "edited_video": null,
+  "character_key": null,
+  "prompt": "<extra_id_0> with blonde wavy hair and <extra_id_1> wearing a red plaid shirt stand facing each other on a cliffside overlooking a foggy ocean, smiling and chatting. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> are sitting by a warm campfire in the woods at night, roasting marshmallows and laughing.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 45,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_5b_filtered_pair/checkpoint-2400.safetensors",
+  "lora_weight": 1.0,
+  "rank": 0,
+  "world_size": 1,
+  "data_parallel": false,
+  "fps": 24,
+  "src_frame_sampling": "contiguous"
+}

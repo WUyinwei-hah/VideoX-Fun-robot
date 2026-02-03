@@ -1,0 +1,13 @@
+{
+  "index": 2,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0008_Fargo/Gaear_Grimsrud/0008_Fargo_00.43.58.143-00.44.03.301.avi",
+  "edited_video": "/gemini/code/datasets/MovieBench_ByCharacter/0008_Fargo/Gaear_Grimsrud/0008_Fargo_00.29.16.248-00.29.17.406__2.avi",
+  "character_key": "0008_Fargo/Gaear_Grimsrud",
+  "prompt": "<extra_id_1>, hands bound, breaks free from <extra_id_0> and runs barefoot across a snow-covered yard toward a yellow house, as he grabs at her. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> sits on a bench in a quiet train station, watching a departure board flicker, suitcase at his feet, lost in thought.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 44,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_5b_filtered_pair/checkpoint-2400.safetensors",
+  "lora_weight": 1.0
+}

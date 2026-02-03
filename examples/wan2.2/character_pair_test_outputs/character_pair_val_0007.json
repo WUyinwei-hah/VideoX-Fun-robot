@@ -1,0 +1,13 @@
+{
+  "index": 7,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0017_Pianist/Bogucki/0017_Pianist_01.14.31.373-01.14.43.421.avi",
+  "edited_video": "/gemini/code/datasets/MovieBench_ByCharacter/0017_Pianist/Bogucki/0017_Pianist_01.13.29.016-01.13.31.775.avi",
+  "character_key": "0017_Pianist/Bogucki",
+  "prompt": "<extra_id_1>, in coat and hat, quickly enters a building as <extra_id_0> helps him then returns to the horse-drawn rickshaw on a dim, wet street near 'Bar Mars'. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0> stands in a candlelit attic, opening an old trunk, dust rising like ghosts in the beam of a broken skylight.",
+  "height": 640,
+  "width": 1152,
+  "video_length": 81,
+  "seed": 49,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_5b_filtered_pair/checkpoint-2400.safetensors",
+  "lora_weight": 1.0
+}

@@ -659,11 +659,16 @@ class Wan2_2TI2VPipeline(DiffusionPipeline):
 
                 # broadcast to batch dimension in a way that's compatible with ONNX/Core ML
                 if init_video is not None:
-                    temp_ts = ((mask[0][0][:, ::2, ::2]) * t).flatten()
-                    temp_ts = torch.cat([
-                        temp_ts,
-                        temp_ts.new_ones(seq_len - temp_ts.size(0)) * t
-                    ])
+                    patch_h = int(self.transformer.config.patch_size[1])
+                    patch_w = int(self.transformer.config.patch_size[2])
+                    temp_ts = ((mask[0][0][:, ::patch_h, ::patch_w]) * t).flatten()
+                    if temp_ts.size(0) < seq_len:
+                        temp_ts = torch.cat([
+                            temp_ts,
+                            temp_ts.new_ones(seq_len - temp_ts.size(0)) * t
+                        ])
+                    elif temp_ts.size(0) > seq_len:
+                        temp_ts = temp_ts[:seq_len]
                     temp_ts = temp_ts.unsqueeze(0)
                     timestep = temp_ts.expand(latent_model_input.shape[0], temp_ts.size(1))
                 else:

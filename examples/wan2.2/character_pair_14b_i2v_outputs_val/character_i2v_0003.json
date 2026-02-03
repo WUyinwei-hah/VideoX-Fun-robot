@@ -1,0 +1,21 @@
+{
+  "index": 3,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0007_DIE_NACHT_DES_JAEGERS/John_Harper/0007_DIE_NACHT_DES_JAEGERS_01.08.22.555-01.08.22.861__2.avi",
+  "character_key": "0007_DIE_NACHT_DES_JAEGERS/John_Harper",
+  "prompt": "<extra_id_2>, in hat and plaid dress with basket, walks past picket fences as <extra_id_1> holds her doll and <extra_id_0> stands beside her, both hesitating while Rachel speaks to them near a porch house. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_1> stands on the bank holding a basket, while <extra_id_0> pushes the boat from the water, surrounded by dense foliage and calm water.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 45,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

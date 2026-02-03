@@ -1,0 +1,21 @@
+{
+  "index": 0,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0003_CASABLANCA/Victor_Laszlo/0003_CASABLANCA_01.36.07.325-01.36.08.665.avi",
+  "character_key": "0003_CASABLANCA/Victor_Laszlo",
+  "prompt": "<extra_id_0>, in hat and coat, walks toward a plane with an escort, while <extra_id_1>, also in hat and coat, stands still, emotional, on a foggy airfield with dim lights. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_0>, in shirt and tie, drinks while conversing with <extra_id_2>, seen from behind in a white suit, in a classic bar with shelves of bottles and glasses.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 42,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

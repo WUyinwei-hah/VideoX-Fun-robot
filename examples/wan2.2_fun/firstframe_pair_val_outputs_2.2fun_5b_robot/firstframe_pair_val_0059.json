@@ -1,0 +1,17 @@
+{
+  "index": 59,
+  "negative_video": "/gemini/code/datasets/libero/perturbed/libero_90/STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_under_the_cabinet_shelf_demo/negative_videos/demo_1.mp4",
+  "original_video": "/gemini/code/datasets/libero/perturbed/libero_90/STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_under_the_cabinet_shelf_demo/original_videos/demo_1.mp4",
+  "condition_video": "/gemini/code/datasets/libero/perturbed/libero_90/STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_under_the_cabinet_shelf_demo/negative_videos/demo_1.mp4",
+  "prompt": "pick up the book on the right and place it under the cabinet shelf",
+  "height": 640,
+  "width": 640,
+  "video_length": 129,
+  "seed": 102,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_robot_libero/checkpoint-16500.safetensors",
+  "lora_weight": 1.0,
+  "lora_high_path": null,
+  "lora_high_weight": 0.55,
+  "fps": 16,
+  "src_frame_sampling": "stride2_then_tail"
+}

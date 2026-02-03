@@ -1,0 +1,21 @@
+{
+  "index": 15,
+  "source_video": "/gemini/code/datasets/MovieBench_ByCharacter/0014_Ist_das_Leben_nicht_schoen/None/0014_Ist_das_Leben_nicht_schoen_00.37.59.480-00.38.01.491.avi",
+  "character_key": "0014_Ist_das_Leben_nicht_schoen/None",
+  "prompt": "<extra_id_1>, in a suit, attentively listens as a tipsy, animated man gestures energetically at a festive house entrance with lit porch and guests arriving. ad23r2 the screen suddenly turns white, then the camera view suddenly changes. <extra_id_1>, distressed, sits rubbing his head as the elderly man stands beside him observing silently, in a simple room with windows and a clothesline.",
+  "height": 352,
+  "width": 640,
+  "video_length": 81,
+  "seed": 57,
+  "lora_low_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_low_filtered_pair/checkpoint-1500.safetensors",
+  "lora_low_weight": 1.0,
+  "lora_high_path": "/gemini/code/VideoX-Fun/output_dir_character_pair_high_filtered_pair/checkpoint-1500.safetensors",
+  "lora_high_weight": 1.0,
+  "rank": 0,
+  "world_size": 8,
+  "data_parallel": false,
+  "fps": 16,
+  "base_resolution": 640,
+  "use_source_video_as_cond": true,
+  "src_frame_sampling": "contiguous"
+}

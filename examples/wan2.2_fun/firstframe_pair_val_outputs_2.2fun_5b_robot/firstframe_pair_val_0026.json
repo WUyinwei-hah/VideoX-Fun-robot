@@ -1,0 +1,17 @@
+{
+  "index": 26,
+  "negative_video": "/gemini/code/datasets/libero/perturbed/libero_90/KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it_demo/negative_videos/demo_1.mp4",
+  "original_video": "/gemini/code/datasets/libero/perturbed/libero_90/KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it_demo/original_videos/demo_1.mp4",
+  "condition_video": "/gemini/code/datasets/libero/perturbed/libero_90/KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it_demo/negative_videos/demo_1.mp4",
+  "prompt": "close the top drawer of the cabinet and put the black bowl on top of it",
+  "height": 640,
+  "width": 640,
+  "video_length": 129,
+  "seed": 69,
+  "lora_path": "/gemini/code/VideoX-Fun/output_dir_robot_libero/checkpoint-16500.safetensors",
+  "lora_weight": 1.0,
+  "lora_high_path": null,
+  "lora_high_weight": 0.55,
+  "fps": 16,
+  "src_frame_sampling": "stride2_then_tail"
+}

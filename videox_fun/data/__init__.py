@@ -2,8 +2,9 @@ from .dataset_image import CC15M, ImageEditDataset
 from .dataset_image_video import (ImageVideoControlDataset, ImageVideoDataset, TextDataset,
                                   ImageVideoSampler)
 from .dataset_video import VideoDataset, VideoSpeechDataset, VideoAnimateDataset, WebVid10M
+from .libero_dataset import LiberoDataset
 from .utils import (VIDEO_READER_TIMEOUT, Camera, VideoReader_contextmanager,
                     custom_meshgrid, get_random_mask, get_relative_pose,
-                    get_video_reader_batch, padding_image, process_pose_file,
+                    get_video_reader_batch, padding_image, process_pose_file,get_random_mask_for_robot,
                     process_pose_params, ray_condition, resize_frame,
                     resize_image_with_target_area)

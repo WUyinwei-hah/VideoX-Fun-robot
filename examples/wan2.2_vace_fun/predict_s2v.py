@@ -42,15 +42,15 @@ from videox_fun.utils.fm_solvers_unipc import FlowUniPCMultistepScheduler
 # 
 # sequential_cpu_offload means that each layer of the model will be moved to the CPU after use, 
 # resulting in slower speeds but saving a large amount of GPU memory.
-GPU_memory_mode     = "sequential_cpu_offload"
+GPU_memory_mode     = "model_full_load"
 # Multi GPUs config
 # Please ensure that the product of ulysses_degree and ring_degree equals the number of GPUs used. 
 # For example, if you are using 8 GPUs, you can set ulysses_degree = 2 and ring_degree = 4.
 # If you are using 1 GPU, you can set ulysses_degree = 1 and ring_degree = 1.
-ulysses_degree      = 1
+ulysses_degree      = 8
 ring_degree         = 1
 # Use FSDP to save more GPU memory in multi gpus.
-fsdp_dit            = False
+fsdp_dit            = True
 fsdp_text_encoder   = True
 # Compile will give a speedup in fixed resolution and need a little GPU memory. 
 # The compile_dit is not compatible with the fsdp_dit and sequential_cpu_offload.
@@ -83,7 +83,7 @@ riflex_k            = 6
 # Config and model path
 config_path         = "config/wan2.2/wan_civitai_t2v.yaml"
 # model path
-model_name          = "models/Diffusion_Transformer/Wan2.2-VACE-Fun-A14B"
+model_name          = "/gemini/code/models/Wan2.2-VACE-Fun-A14B"
 
 # Choose the sampler in "Flow", "Flow_Unipc", "Flow_DPM++"
 sampler_name        = "Flow"
@@ -102,7 +102,7 @@ lora_path               = None
 lora_high_path          = None
 
 # Other params
-sample_size         = [480, 832]
+sample_size         = [960, 640]
 video_length        = 81
 fps                 = 16
 
@@ -115,7 +115,7 @@ end_image           = None
 # Use inpaint video instead of start image and end image.
 inpaint_video       = None
 inpaint_video_mask  = None
-subject_ref_images  = ["asset/8.png", "asset/ref_1.png"]
+subject_ref_images  = ["/gemini/code/datasets/MovieBench/selected_subject/human/21_JUMP_STREET_Amir.jpg", "/gemini/code/datasets/MovieBench/selected_subject/human/Harry_Potter_and_the_chamber_of_secrets_Hagrid_The_Giant.jpg"]
 vace_context_scale  = 1.00
 # Sometimes, when generating a video from a reference image, white borders appear.
 # Because the padding is mistakenly treated as part of the image. 
@@ -124,8 +124,9 @@ padding_in_subject_ref_images   = True
 
 # 使用更长的neg prompt如"模糊，突变，变形，失真，画面暗，文本字幕，画面固定，连环画，漫画，线稿，没有主体。"，可以增加稳定性
 # 在neg prompt中添加"安静，固定"等词语可以增加动态性。
-prompt                  = "海风作曲，浪花打拍。她握着一台亮黄色相机，双臂如翼般舒展流转。双手托举相机，在胸前划出轻柔的圆弧，时而高举过肩，迎向天际的光晕，时而缓缓贴近心口，倾听快门低语般的节奏。紫色长发在风中扬起，拂过肩头，仿佛与镜头共舞。她的目光随取景框游走，每一次微倾与回旋，都让镜头掠过海天相接的边际、摇曳的花丛。最后，呼吸一凝，稳稳对准水中倒影，轻轻按下快门——将风、光与心动，悄然收藏。"
-negative_prompt         = "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
+prompt                  = "两个角色在沙滩上散步. "
+negative_prompt         = ""
+# negative_prompt         = "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
 
 # Using longer neg prompt such as "Blurring, mutation, deformation, distortion, dark and solid, comics, text subtitles, line art." can increase stability
 # Adding words such as "quiet, solid" to the neg prompt can increase dynamism.
