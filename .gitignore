@@ -1,5 +1,9 @@
 # Byte-compiled / optimized / DLL files
-models*
+models/*.pt
+models/*.pth
+models/*.ckpt
+models/*.bin
+models/*checkpoint*
 output*
 logs*
 taming*
