@@ -564,6 +564,12 @@ def parse_args():
         help="Initial learning rate (after the potential warmup period) to use.",
     )
     parser.add_argument(
+        "--override_lr_on_resume",
+        action="store_true",
+        default=False,
+        help="If set and resuming from checkpoint, override optimizer/scheduler learning rate to --learning_rate after loading state.",
+    )
+    parser.add_argument(
         "--scale_lr",
         action="store_true",
         default=False,
@@ -1323,12 +1329,42 @@ def main():
                         pickle.dump([batch_sampler.sampler._pos_start, first_epoch], file)
 
             def load_model_hook(models, input_dir):
+                from safetensors.torch import load_file
+                
+                # Load LoRA / model weights from safetensors
+                safetensor_path = os.path.join(input_dir, "lora_diffusion_pytorch_model.safetensors")
+                if os.path.exists(safetensor_path):
+                    state_dict = load_file(safetensor_path, device=str(accelerator.device))
+                    if args.use_peft_lora:
+                        from peft import set_peft_model_state_dict
+                        set_peft_model_state_dict(accelerator.unwrap_model(models[-1]), state_dict)
+                        print(f"Loaded LoRA weights from {safetensor_path} using set_peft_model_state_dict.")
+                    else:
+                        m, u = accelerator.unwrap_model(models[-1]).load_state_dict(state_dict, strict=False)
+                        print(f"Loaded model weights from {safetensor_path}. missing keys: {len(m)}, unexpected keys: {len(u)}")
+                
+                # Load robot extra modules
+                robot_path = os.path.join(input_dir, "robot_extra_modules.safetensors")
+                if os.path.exists(robot_path):
+                    robot_sd = load_file(robot_path, device=str(accelerator.device))
+                    for _m in models:
+                        if hasattr(_m, "action_embedding") or hasattr(_m, "action_head"):
+                            _load_robot_extra_state_dict(accelerator.unwrap_model(_m), robot_sd)
+                            print(f"Loaded robot extra modules from {robot_path}.")
+                            break
+                
+                # Load sampler position
                 pkl_path = os.path.join(input_dir, "sampler_pos_start.pkl")
                 if os.path.exists(pkl_path):
                     with open(pkl_path, 'rb') as file:
                         loaded_number, _ = pickle.load(file)
                         batch_sampler.sampler._pos_start = max(loaded_number - args.dataloader_num_workers * accelerator.num_processes * 2, 0)
                     print(f"Load pkl from {pkl_path}. Get loaded_number = {loaded_number}.")
+                
+                # Prevent accelerator from trying to load pytorch_model.bin
+                if not args.use_deepspeed:
+                    for _ in range(len(models)):
+                        models.pop()
 
         accelerator.register_save_state_pre_hook(save_model_hook)
         accelerator.register_load_state_pre_hook(load_model_hook)
@@ -1949,6 +1985,15 @@ def main():
             else:
                 accelerator.load_state(checkpoint_folder_path)
                 accelerator.print("accelerator.load_state() completed.")
+
+            if args.override_lr_on_resume:
+                accelerator.print(f"Overriding learning rate on resume to {args.learning_rate}.")
+                for param_group in optimizer.param_groups:
+                    param_group["lr"] = args.learning_rate
+                if hasattr(lr_scheduler, "base_lrs") and lr_scheduler.base_lrs is not None:
+                    lr_scheduler.base_lrs = [args.learning_rate for _ in lr_scheduler.base_lrs]
+                if hasattr(lr_scheduler, "_last_lr") and lr_scheduler._last_lr is not None:
+                    lr_scheduler._last_lr = [args.learning_rate for _ in lr_scheduler._last_lr]
 
     else:
         initial_global_step = 0

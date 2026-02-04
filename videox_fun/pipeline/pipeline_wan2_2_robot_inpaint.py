@@ -470,8 +470,12 @@ class Wan2_2RobotInpaintPipeline(DiffusionPipeline):
         proprio_latents = None
         if actions_target is not None:
             actions_latents = randn_tensor(actions_target.shape, generator=generator, device=device, dtype=weight_dtype)
+            if hasattr(self.scheduler, "init_noise_sigma"):
+                actions_latents = actions_latents * self.scheduler.init_noise_sigma
         if proprio_target is not None:
             proprio_latents = randn_tensor(proprio_target[:, -1:].shape, generator=generator, device=device, dtype=weight_dtype)
+            if hasattr(self.scheduler, "init_noise_sigma"):
+                proprio_latents = proprio_latents * self.scheduler.init_noise_sigma
 
         extra_step_kwargs = self.prepare_extra_step_kwargs(generator, eta)
 
@@ -545,20 +549,23 @@ class Wan2_2RobotInpaintPipeline(DiffusionPipeline):
                 proprio_in = None
                 if actions_cond is not None or actions_latents is not None:
                     if do_classifier_free_guidance:
+                        # For CFG, uncond and cond branches must share the same noisy latents (x_t),
+                        # only differing in the conditioning (text embedding).
+                        # Using zeros for uncond target violates CFG assumptions.
                         zeros_cond = torch.zeros_like(actions_cond) if actions_cond is not None else None
-                        zeros_target = torch.zeros_like(actions_latents) if actions_latents is not None else None
                         actions_cond_cfg = torch.cat([zeros_cond, actions_cond], dim=0) if actions_cond is not None else None
-                        actions_target_cfg = torch.cat([zeros_target, actions_latents], dim=0) if actions_latents is not None else None
+                        actions_target_cfg = torch.cat([actions_latents, actions_latents], dim=0) if actions_latents is not None else None
                         actions_in = (actions_cond_cfg, actions_target_cfg)
                     else:
                         actions_in = (actions_cond, actions_latents)
 
                 if proprio_cond is not None or proprio_latents is not None:
                     if do_classifier_free_guidance:
+                        # For CFG, uncond and cond branches must share the same noisy latents (x_t),
+                        # only differing in the conditioning (text embedding).
                         zeros_cond = torch.zeros_like(proprio_cond) if proprio_cond is not None else None
-                        zeros_target = torch.zeros_like(proprio_latents) if proprio_latents is not None else None
                         proprio_cond_cfg = torch.cat([zeros_cond, proprio_cond], dim=0) if proprio_cond is not None else None
-                        proprio_target_cfg = torch.cat([zeros_target, proprio_latents], dim=0) if proprio_latents is not None else None
+                        proprio_target_cfg = torch.cat([proprio_latents, proprio_latents], dim=0) if proprio_latents is not None else None
                         proprio_in = (proprio_cond_cfg, proprio_target_cfg)
                     else:
                         proprio_in = (proprio_cond, proprio_latents)
@@ -596,12 +603,21 @@ class Wan2_2RobotInpaintPipeline(DiffusionPipeline):
 
                 latents = self.scheduler.step(noise_pred, t, latents, **extra_step_kwargs, return_dict=False)[0]
 
+                # Save step index after video latent step to reuse for action/proprio
+                step_index_after_video = getattr(self.scheduler, '_step_index', None)
+
                 if actions_latents is not None and action_pred is not None:
+                    # Restore step index before action step
+                    if step_index_after_video is not None:
+                        self.scheduler._step_index = step_index_after_video - 1
                     actions_latents = self.scheduler.step(
                         action_pred, t, actions_latents, **extra_step_kwargs, return_dict=False
                     )[0]
 
                 if proprio_latents is not None and proprio_pred is not None:
+                    # Restore step index before proprio step
+                    if step_index_after_video is not None:
+                        self.scheduler._step_index = step_index_after_video - 1
                     proprio_latents = self.scheduler.step(
                         proprio_pred, t, proprio_latents, **extra_step_kwargs, return_dict=False
                     )[0]

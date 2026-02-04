@@ -15,7 +15,7 @@ python ${PROJECT_ROOT}/scripts/closed_loop_wan2.2_fun/predict_robot.py \
   --libero_data_root="$LIBERO_DATA_ROOT" \
   --robot_suites "${ROBOT_SUITES[@]}" \
   --video_length=45 \
-  --guidance_scale=6.0 \
+  --guidance_scale=1 \
   --num_inference_steps=50 \
   --shift=5 \
   --sampler_name=Flow \

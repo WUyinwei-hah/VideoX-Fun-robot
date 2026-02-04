@@ -35,10 +35,11 @@ accelerate launch --mixed_precision="bf16" --num_processes 8 --num_machines 1 ${
   --gradient_accumulation_steps=1 \
   --dataloader_num_workers=0 \
   --num_train_epochs=10000 \
-  --checkpointing_steps=500 \
+  --checkpointing_steps=250 \
   --save_state \
   --resume_from_checkpoint="latest" \
   --learning_rate=1e-04 \
+  --override_lr_on_resume \
   --seed=42 \
   --output_dir="/gemini/code/VideoX-Fun/scripts/closed_loop_wan2.2_fun/output_dir_robot_libero" \
   --gradient_checkpointing \
